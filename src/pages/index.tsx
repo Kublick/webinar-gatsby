@@ -1,195 +1,170 @@
-import * as React from "react"
+import { StaticImage } from 'gatsby-plugin-image';
+import * as React from 'react';
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
-  }
-]
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-// markup
 const IndexPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        🎉🎉🎉
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+	return (
+		<main>
+			<section className="py-12 container mx-auto md:bg-gradient-to-r from-primary via-white to-white md:grid md:grid-cols-2 ">
+				<StaticImage
+					src="../images/webinar-berenice.webp"
+					alt="Webinar"
+					className="w-1/2 md:w-full"
+				/>
+				<div className="flex flex-col items-center m-4">
+					<h1 className="text-xl md:text-2xl text-primary">
+						Webinar <span className="text-black">Gratuito</span> Online
+					</h1>
+					<h2 className="text-2xl text-black md:text-5xl md:py-4 text-center">
+						Los 3 Secretos Para Vender Tu Consulta Con Éxito Online En Internet
+					</h2>
+					<button
+						className="bg-primary py-4 px-8 text-white sm:text-lg rounded-full m-4"
+						// on:click={openModal}
+					>
+						RESERVAR MI LUGAR AHORA
+					</button>
+					<p className="text-xs">Da click en el botón para registrarte</p>
+				</div>
+			</section>
+			<section className="my-4 bg-primary text-white py-8">
+				<div className="container mx-auto ">
+					<div className="grid md:grid-cols-2 mx-12 md:mx-4 gap-4 place-items-start sm:place-items-center">
+						<div className="flex gap-4 justify-center items-center">
+							<StaticImage
+								src="../images/boleto.webp"
+								alt="Boleto"
+								className="w-16 h-16 rounded-full"
+							/>
+							<div>
+								<h3>Reserva tu Lugar</h3>
+								<p>29 de Junio</p>
+							</div>
+						</div>
+						<div>
+							<div className="flex gap-4 justify-center items-center">
+								<StaticImage
+									src="../images/anfritrion_small.webp"
+									alt="anfritrion"
+									className="w-16 h-16 rounded-full"
+								/>
+								<div>
+									<h3>Psicóloga Berenice Bastidas</h3>
+									<p>Anfritrión del taller</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section className="container mx-auto py-8">
+				<div className="mx-4">
+					<h3 className="text-2xl md:text-5xl text-center">
+						Lo Que Aprenderás En Este Exclusivo Evento
+					</h3>
+				</div>
+				<div className="grid md:grid-cols-3 mx-12 md:gap-16 lg:mx-24 md:my-12">
+					<div className="m-4">
+						<h4 className="text-xl font-semibold">Secreto #1</h4>
+						<div className="bg-gradient-to-r from-primary  to-white h-3 my-2" />
+						<p>
+							La razón de por que cualquier persona puede conseguir pacientes en
+							internet
+						</p>
+					</div>
+					<div className="m-4">
+						<h4 className="text-xl font-semibold">Secreto #2</h4>
+						<div className="bg-gradient-to-r from-primary  to-white h-3 my-2" />
+						<p>
+							Por que el boca a boca para conseguir pacientes, ya no funciona en
+							la era digital
+						</p>
+					</div>
+					<div className="m-4">
+						<h4 className="text-xl font-semibold">Secreto #3</h4>
+						<div className="bg-gradient-to-r from-primary  to-white h-3 my-2" />
+						<p>
+							La formula triplé y por que es la única que necesitas para ganarte
+							la vida con tu profesión
+						</p>
+					</div>
+				</div>
+			</section>
+			<section className="my-4 bg-primary text-white md:mx-auto py-8 text-center px-4">
+				<div className="container mx-auto ">
+					<h3 className="text-2xl md:text-4xl">
+						TENEMOS LUGARES LIMITADOS A ESTE WEBINAR
+					</h3>
+				</div>
 
-export default IndexPage
+				<div className="flex justify-center pt-4" />
+			</section>
+			<section className="container my-4 mx-auto">
+				<div className="grid md:grid-cols-3 items-center">
+					<div className="md:col-span-2 mx-8">
+						<h2 className="text-2xl md:text-3xl">
+							Acerca de Berenice Bastidas
+						</h2>
+						<div className="bg-gradient-to-r from-primary  to-white h-6 my-2" />
+						<p>
+							Psicóloga de profesión desde hace 15 años y en los últimos años me
+							he dedicado ayudar a Psicólogos, Nutriologos y Profesionales de la
+							Salud a que multipliquen sus ingresos incrementando su número de
+							pacientes con estragia a través de internet incluso empezando
+							desde cero
+						</p>
+					</div>
+
+					<div className="flex justify-center my-4 md:my-0 ">
+						<StaticImage
+							src="../images/berenice_portrait.webp"
+							alt="Berenice Bastidas"
+							className=""
+						/>
+					</div>
+				</div>
+			</section>
+
+			<section className="my-4 bg-primary text-white ">
+				<div className="container md:mx-auto py-8 text-center px-4">
+					<h3 className="text-md md:text-lg">
+						¿Eres Psicólogo, Nutriologo, Terapeuta, Profesional de la Salud,
+						Dentista o Coach?
+					</h3>
+					<h2 className="text-xl md:text-2xl">
+						APROVECHA ESTA OPORTUNIDAD, SI NO ES AHORA CUANDO..
+					</h2>
+					<p className="text-sm sm:text-base">
+						¡Este Webinar Gratuito Si Es Para Ti
+					</p>
+				</div>
+			</section>
+
+			<section className="container mx-auto pb-8">
+				<h2 className="text-2xl text-black md:text-4xl md:py-4 md:mx-12 mx-4 text-center ">
+					Los 3 Secretos Para Vender Tu Consulta Con Éxito Online En Internet
+				</h2>
+
+				<div className="flex flex-col items-center justify-center flex-1">
+					<button
+						className="bg-primary py-4 px-8 text-white sm:text-lg rounded-full m-4 "
+						// on:click={openModal}
+					>
+						RESERVAR MI LUGAR AHORA
+					</button>
+					<p className="text-xs">Da click en el botón para registrarte</p>
+					<p className="text-sm sm:text-base">
+						Tu oportunidad de registro expira cuando el reloj se detenga
+					</p>
+					{/* <Countdown on:completed={() => (done = true)} /> */}
+					<img
+						src="/images/LogoIncrementaColor.svg"
+						alt="Berenice Bastidas"
+						className=""
+					/>
+				</div>
+			</section>
+		</main>
+	);
+};
+
+export default IndexPage;
